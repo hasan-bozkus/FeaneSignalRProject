@@ -10,3 +10,5 @@
         public bool Status { get; set; }
     }
 }
+
+//Comment yerin description yazılmış, önemli değil

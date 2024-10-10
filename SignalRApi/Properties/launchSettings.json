@@ -5,9 +5,11 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:34303",
-      "sslPort": 44398
+      "sslPort": 44303
     }
   },
+  //eski port: 44389
+  //yeni port: 44303
   "profiles": {
     "SignalRApi": {
       "commandName": "Project",
