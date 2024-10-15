@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BusinessLayer.Abstract;
+using SignalR.DataAccessLayer.Concrete;
 using SignalR.DtoLayer.ProductDto;
 using SignalR.EntityLayer.Entities;
 
@@ -27,6 +28,25 @@ namespace SignalRApi.Controllers
             return Ok(value);
         }
 
+        [HttpGet("ProdctListWithCategory")]
+        public IActionResult ProdctListWithCategory()
+        {
+            //var context = new SignalRContext();
+            //var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategoryDto
+            //{
+            //    Description = y.Description,
+            //    ImageUrl = y.ImageUrl,
+            //    Price = y.Price,
+            //    ProductID = y.ProductID,
+            //    ProductName = y.ProductName,
+            //    ProductStatus = y.ProductStatus,
+            //    CategoryName = y.Category.CategoryName
+            //}).ToList();
+
+            var values = _mapper.Map<List<ResultProductWithCategoryDto>>(_productService.TGetProductsWithCategories());
+            return Ok(values);
+        }
+
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
@@ -38,7 +58,7 @@ namespace SignalRApi.Controllers
               ProductName = createProductDto.ProductName,
               ProductStatus = true
             });
-            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
+            return Ok("Ürün başarılı bir şekilde eklendi.");
         }
 
         [HttpDelete]
@@ -46,7 +66,7 @@ namespace SignalRApi.Controllers
         {
             var value = _productService.TGetByID(id);
             _productService.TDelete(value);
-            return Ok("Rezervasyon başarılı bir şekilde silindi.");
+            return Ok("Ürün başarılı bir şekilde silindi.");
         }
 
         [HttpPut]
@@ -62,7 +82,7 @@ namespace SignalRApi.Controllers
                 ProductName = updateProductDto.ProductName,
                 ProductStatus = updateProductDto.ProductStatus
             });
-            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
+            return Ok("Ürün başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("GetProduct")]

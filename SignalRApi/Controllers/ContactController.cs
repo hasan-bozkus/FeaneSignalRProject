@@ -37,7 +37,7 @@ namespace SignalRApi.Controllers
                 Mail = createContactDto.Mail,
                 PhoneNumber = createContactDto.PhoneNumber
             });
-            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
+            return Ok("İletişim başarılı bir şekilde eklendi.");
         }
 
         [HttpDelete]
@@ -45,7 +45,7 @@ namespace SignalRApi.Controllers
         {
             var value = _contactService.TGetByID(id);
             _contactService.TDelete(value);
-            return Ok("Rezervasyon başarılı bir şekilde silindi.");
+            return Ok("İletişim başarılı bir şekilde silindi.");
         }
 
         [HttpPut]
@@ -60,7 +60,7 @@ namespace SignalRApi.Controllers
                 Mail = updateContactDto.Mail,
                 PhoneNumber = updateContactDto.PhoneNumber
             });
-            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
+            return Ok("İletişim başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("GetBooking")]

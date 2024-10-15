@@ -37,7 +37,7 @@ namespace SignalRApi.Controllers
                Name = createTestimonialDto.Name,
                Status = true
             });
-            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
+            return Ok("Müşteri Yorumu başarılı bir şekilde eklendi.");
         }
 
         [HttpDelete]
@@ -45,7 +45,7 @@ namespace SignalRApi.Controllers
         {
             var value = _TestimonialService.TGetByID(id);
             _TestimonialService.TDelete(value);
-            return Ok("Rezervasyon başarılı bir şekilde silindi.");
+            return Ok("Müşteri Yorumu başarılı bir şekilde silindi.");
         }
 
         [HttpPut]
@@ -61,7 +61,7 @@ namespace SignalRApi.Controllers
                 Name = updateTestimonialDto.Name,
                 Status = updateTestimonialDto.Status
             });
-            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
+            return Ok("Müşteri Yorumu başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("GetTestimonial")]

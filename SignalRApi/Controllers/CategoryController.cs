@@ -35,7 +35,7 @@ namespace SignalRApi.Controllers
                 CategoryName = createCategoryDto.CategoryName,
                 Status = true
             });
-            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
+            return Ok("Kategori başarılı bir şekilde eklendi.");
         }
 
         [HttpDelete]
@@ -43,7 +43,7 @@ namespace SignalRApi.Controllers
         {
             var value = _categoryService.TGetByID(id);
             _categoryService.TDelete(value);
-            return Ok("Rezervasyon başarılı bir şekilde silindi.");
+            return Ok("Kategori başarılı bir şekilde silindi.");
         }
 
         [HttpPut]
@@ -56,7 +56,7 @@ namespace SignalRApi.Controllers
                 CategoryName = updateCategroyDto.CategoryName,
                 Status = updateCategroyDto.Status
             });
-            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
+            return Ok("Kategori başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("GetBooking")]

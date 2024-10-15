@@ -36,7 +36,7 @@ namespace SignalRApi.Controllers
                 Title = createSocialMediaDto.Title,
                 Url = createSocialMediaDto.Url
             });
-            return Ok("Rezervasyon başarılı bir şekilde eklendi.");
+            return Ok("Sosyal Medya başarılı bir şekilde eklendi.");
         }
 
         [HttpDelete]
@@ -44,7 +44,7 @@ namespace SignalRApi.Controllers
         {
             var value = _SocialMediaService.TGetByID(id);
             _SocialMediaService.TDelete(value);
-            return Ok("Rezervasyon başarılı bir şekilde silindi.");
+            return Ok("Sosyal Medya başarılı bir şekilde silindi.");
         }
 
         [HttpPut]
@@ -58,7 +58,7 @@ namespace SignalRApi.Controllers
                 Title = updateSocialMediaDto.Title,
                 Url = updateSocialMediaDto.Url
             });
-            return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
+            return Ok("Sosyal Medya başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("GetSocialMedia")]
