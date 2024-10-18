@@ -61,7 +61,7 @@ namespace SignalRApi.Controllers
             return Ok("Ürün başarılı bir şekilde eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productService.TGetByID(id);
@@ -85,7 +85,7 @@ namespace SignalRApi.Controllers
             return Ok("Ürün başarılı bir şekilde güncellendi.");
         }
 
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productService.TGetByID(id);

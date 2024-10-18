@@ -40,7 +40,7 @@ namespace SignalRApi.Controllers
             return Ok("İletişim başarılı bir şekilde eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteContact(int id)
         {
             var value = _contactService.TGetByID(id);
@@ -63,7 +63,7 @@ namespace SignalRApi.Controllers
             return Ok("İletişim başarılı bir şekilde güncellendi.");
         }
 
-        [HttpGet("GetBooking")]
+        [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
             var value = _contactService.TGetByID(id);
