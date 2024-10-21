@@ -12,7 +12,7 @@ namespace SignalR.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-3JI56T6\\SQLEXPRESS;initial Catalog=SignalRDb; integrated Security=true;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-3JI56T6\\SQLEXPRESS;initial Catalog=SignalRDb; integrated Security=true;TrustServerCertificate=true;Connection Timeout=30;");
         }
 
         public DbSet<About> Abouts { get; set; }
