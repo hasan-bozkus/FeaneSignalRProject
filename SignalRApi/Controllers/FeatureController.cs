@@ -54,7 +54,7 @@ namespace SignalRApi.Controllers
         public IActionResult UpdateFeature(UpdateFeatureDto updateFeatureDto)
         {
 
-            _featureService.TAdd(new Feature()
+            _featureService.TUpdate(new Feature()
             {
                 FeatureID = updateFeatureDto.FeatureID,
                 Description1 = updateFeatureDto.Description1,

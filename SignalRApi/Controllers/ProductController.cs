@@ -51,7 +51,7 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateProduct(CreateProductDto createProductDto)
         {
-            _productService.TAdd(new Product()
+            _productService.TUpdate(new Product()
             {
               Description = createProductDto.Description,
               ImageUrl = createProductDto.ImageUrl,

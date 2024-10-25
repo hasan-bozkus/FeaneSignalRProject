@@ -51,7 +51,7 @@ namespace SignalRApi.Controllers
         public IActionResult UpdateSocialMedia(UpdateSocialMediaDto updateSocialMediaDto)
         {
 
-            _SocialMediaService.TAdd(new SocialMedia()
+            _SocialMediaService.TUpdate(new SocialMedia()
             {
                 SocialMediaID = updateSocialMediaDto.SocialMediaID,
                 Icon = updateSocialMediaDto.Icon,
