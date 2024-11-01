@@ -29,6 +29,27 @@ namespace SignalRApi.Controllers
             return Ok(value);
         }
 
+        [HttpGet("ProductCount")]
+        public IActionResult ProductCount()
+        {
+            var values = _productService.TProductCount();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductCountByNameDrink")]
+        public IActionResult ProductCountByNameDrink()
+        {
+            var values = _productService.TProductCountByNameDrink();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductCountByNameHamburger")]
+        public IActionResult ProductCountByNameHamburger()
+        {
+            var values = _productService.TProductCountByNameHumburger();
+            return Ok(values);
+        }
+
         [HttpGet("ProdctListWithCategory")]
         public IActionResult ProdctListWithCategory()
         {
@@ -45,6 +66,34 @@ namespace SignalRApi.Controllers
             }).ToList();
 
             //var values = _mapper.Map<List<ResultProductWithCategoryDto>>(_productService.TGetProductsWithCategories());
+            return Ok(values);
+        }
+
+        [HttpGet("ProductPriceAvg")]
+        public IActionResult ProductPriceAvg()
+        {
+            var values = _productService.TProductPriceAvg();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductNameByMaxPrice")]
+        public IActionResult ProductNameByMaxPrice()
+        {
+            var values = _productService.TProductNameByMaxPrice();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductNameByMinPrice")]
+        public IActionResult ProductNameByMinPrice()
+        {
+            var values = _productService.TProductNameByMinPrice();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductAvgPriceByHamburger")]
+        public IActionResult ProductAvgPriceByHamburger()
+        {
+            var values = _productService.TProductAvgPriceByHamburger();
             return Ok(values);
         }
 
