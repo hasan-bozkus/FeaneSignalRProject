@@ -1,0 +1,11 @@
+﻿        function showproductid(value){
+            var id = value;
+            $.ajax({
+                type: 'post',
+                data: {item:id},
+                contentType:'json',
+                success:function(){
+                    swal("Seçilen Ürün ID " + id, "Seçiminizi Yaptınız", "success" )
+                }
+            });
+        }
