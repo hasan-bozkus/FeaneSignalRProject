@@ -27,7 +27,7 @@ namespace SignalRApi.Hubs
 
         public async Task SendStatistic()
         {
-           var value = _categoryService.TCategoryCount();
+            var value = _categoryService.TCategoryCount();
             await Clients.All.SendAsync("ReceiverCategoryCount", value);
 
             var value2 = _productService.TProductCount();
@@ -101,6 +101,12 @@ namespace SignalRApi.Hubs
 
             var notificationListByFalse = _notificationService.TGetAllNotificationByFalse();
             await Clients.All.SendAsync("ReceiveNotificationListByFalse", notificationListByFalse);
+        }
+
+        public async Task GetMenuTableStatus()
+        {
+            var value = _menuTableService.TGetListAll();
+            await Clients.All.SendAsync("ReceiveMenuTableStatus", value);
         }
     }
 }
