@@ -6,7 +6,7 @@ namespace SignalRApi.Mapping
 {
     public class NotificationMapping : Profile
     {
-        protected NotificationMapping()
+        public NotificationMapping()
         {
             CreateMap<CreateNotificationDto, Notification>().ReverseMap();
             CreateMap<ResultNotificationDto, Notification>().ReverseMap();
