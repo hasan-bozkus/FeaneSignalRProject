@@ -28,14 +28,15 @@ namespace SignalRApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult DiscountContact(CreateDiscountDto createDiscountDto)
+        public IActionResult CreateDiscount(CreateDiscountDto createDiscountDto)
         {
             _discountService.TAdd(new Discount()
             {
                Amount = createDiscountDto.Amount,
                Description = createDiscountDto.Description,
                ImageUrl = createDiscountDto.ImageUrl,   
-               Title = createDiscountDto.Title
+               Title = createDiscountDto.Title,
+               Status = createDiscountDto.Status,
             });
             return Ok("Rezervasyon başarılı bir şekilde eklendi.");
         }
@@ -58,7 +59,8 @@ namespace SignalRApi.Controllers
                 Amount = updateDsicountDto.Amount,
                 Description = updateDsicountDto.Description,
                 ImageUrl = updateDsicountDto.ImageUrl,
-                Title = updateDsicountDto.Title
+                Title = updateDsicountDto.Title,
+                Status = updateDsicountDto.Status
             });
             return Ok("Rezervasyon başarılı bir şekilde güncellendi.");
         }
@@ -68,6 +70,27 @@ namespace SignalRApi.Controllers
         {
             var value = _discountService.TGetByID(id);
             return Ok(value);
+        }
+
+        [HttpGet("ChangeStatusToFalse/{id}")]
+        public IActionResult ChangeStatusToFalse(int id)
+        {
+            _discountService.TChangeStatusToFalse(id);
+            return Ok("İndirim Pasif oldu");
+        }
+
+        [HttpGet("ChangeStatusToTrue/{id}")]
+        public IActionResult ChangeStatusToTrue(int id)
+        {
+            _discountService.TChangeStatusToTrue(id);
+            return Ok("İndirim Aktif oldu");
+        }
+
+        [HttpGet("GetListByStatusTrue")]
+        public IActionResult GetListByStatusTrue()
+        {
+            var values = _discountService.TGetListByStatusTrue();
+            return Ok(values);
         }
     }
 }

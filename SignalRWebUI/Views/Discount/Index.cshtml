@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <div class="content">
@@ -16,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-sub">
-                            Günün İndirimli Ürünlari Aşağıda Yer Almaktadır. Tema Bütünlüğü İçin 2 Adet İndirimli Ürün Seçiniz.
+                            Günün İndirimli Ürünlari Aşağıda Yer Almaktadır. Tema Bütünlüğü İçin <strong> 2 Adet </strong> İndirimli Ürün Seçiniz.
                         </div>
                         <table class="table mt-3">
                             <thead>
@@ -32,12 +33,23 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
+
                                     <tr>
-                                        <td>@item.DiscountID</td>
+                                        <th>@count</th>
                                         <td>@item.Title</td>
                                         <td>@item.Amount</td>
-                                        <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-outline-warning">Durum</a></td>
-                                        <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-outline-danger">Sil</a></td>
+                                        <td>
+                                            @if(item.Status == true)
+                                            {
+                                                <a href="/Discount/ChangeStatusToFalse/@item.DiscountID" class="btn btn-outline-dark">Pasif Yap</a>
+                                            }
+                                            @if(item.Status == false)
+                                            {
+                                                <a href="/Discount/ChangeStatusToTrue/@item.DiscountID" class="btn btn-outline-success">Aktif Yap</a>
+                                            }
+                                    </td>
+                                    <td><a href="/Discount/DeleteDiscount/@item.DiscountID" class="btn btn-outline-danger">Sil</a></td>
                                         <td><a href="/Discount/UpdateDiscount/@item.DiscountID" class="btn btn-outline-success">Güncelle</a></td>
                                     </tr>
                                 }
