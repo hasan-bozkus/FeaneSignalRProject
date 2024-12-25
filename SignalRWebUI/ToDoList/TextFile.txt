@@ -1,5 +1,4 @@
 ﻿ProgressBar İstatistik
-QR Kod Sistemi
 LogOut
 Ayarlar
 Mail?
