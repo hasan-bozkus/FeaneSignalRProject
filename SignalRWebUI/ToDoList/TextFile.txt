@@ -1,4 +1,2 @@
-﻿Mail?
-ProgressBar İstatistik
+﻿ProgressBar İstatistik
 Arama İşlemi - Search
-LogOut
