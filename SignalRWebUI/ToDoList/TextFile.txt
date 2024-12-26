@@ -1,5 +1,4 @@
-﻿ProgressBar İstatistik
-LogOut
-Ayarlar
-Mail?
+﻿Mail?
+ProgressBar İstatistik
 Arama İşlemi - Search
+LogOut
