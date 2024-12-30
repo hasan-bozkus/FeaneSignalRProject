@@ -1,4 +1,5 @@
-﻿using SignalR.EntityLayer.Entities;
+﻿using SignalR.DtoLayer.ProductDto;
+using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SignalR.DataAccessLayer.Abstract
 {
     public interface IProductDal : IGenericDal<Product>
     {
-        List<Product> GetProductsWithCategories();
+        List<ResultProductWithCategoryDto> GetProductsWithCategories();
         int ProductCount();
         int ProductCountByNameHumburger();
         int ProductCountByNameDrink();
@@ -20,5 +21,7 @@ namespace SignalR.DataAccessLayer.Abstract
         decimal ProductPriceBySetakBurger();
         decimal TotalPriceByDrinkCategory();
         decimal TotalPriceBySalatCategory();
+
+        List<ResultGetLast9ProductsDto> GetLast9Products();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SignalR.BusinessLayer.Abstract;
 using SignalR.DataAccessLayer.Abstract;
+using SignalR.DtoLayer.ProductDto;
 using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace SignalR.BusinessLayer.Concrete
 			return _ProductDal.GetListAll();
 		}
 
-        public List<Product> TGetProductsWithCategories()
+        public List<ResultProductWithCategoryDto> TGetProductsWithCategories()
         {
             return _ProductDal.GetProductsWithCategories();
         }
@@ -96,6 +97,11 @@ namespace SignalR.BusinessLayer.Concrete
         public decimal TTotalPriceBySalatCategory()
         {
             return _ProductDal.TotalPriceBySalatCategory();
+        }
+
+        public List<ResultGetLast9ProductsDto> TGetLast9Products()
+        {
+            return _ProductDal.GetLast9Products();
         }
     }
 }

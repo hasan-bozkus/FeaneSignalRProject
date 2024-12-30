@@ -18,10 +18,10 @@ namespace SignalR.DataAccessLayer.EntityFramework
         {
         }
 
-        public List<Product> GetProductsWithCategories()
+        public List<ResultProductWithCategoryDto> GetProductsWithCategories()
         {
             var context = new SignalRContext();
-            var values = context.Products.Include(x => x.Category).Select(y => new Product
+            var values = context.Products.Include(x => x.Category).Select(y => new ResultProductWithCategoryDto
             {
                 Description = y.Description,
                 ImageUrl = y.ImageUrl,
@@ -29,7 +29,7 @@ namespace SignalR.DataAccessLayer.EntityFramework
                 ProductID = y.ProductID,
                 ProductName = y.ProductName,
                 ProductStatus = y.ProductStatus,
-                Category = y.Category
+                CategoryName = y.Category.CategoryName
             }).ToList();
             return values;
         }
@@ -95,6 +95,23 @@ namespace SignalR.DataAccessLayer.EntityFramework
             using var context = new SignalRContext();
             int id = context.Categories.Where(x => x.CategoryName == "Salata").Select(y => y.CategoryID).FirstOrDefault();
             return context.Products.Where(x => x.CategoryID == id).Sum(y => y.Price);
+        }
+
+        public List<ResultGetLast9ProductsDto> GetLast9Products()
+        {
+            using var context = new SignalRContext();
+            var values = context.Products.Take(9).Select(x => new ResultGetLast9ProductsDto
+            {
+                CategoryName = x.Category.CategoryName,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl,
+                Price = x.Price,
+                ProductID = x.ProductID,
+                ProductName = x.ProductName,
+                ProductStatus = x.ProductStatus,
+               
+            }).ToList();
+            return values;
         }
     }
 }

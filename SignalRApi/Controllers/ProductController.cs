@@ -148,5 +148,12 @@ namespace SignalRApi.Controllers
             var values = _productService.TTotalPriceBySalatCategory();
             return Ok(values);
         }
+
+        [HttpGet("GetLast9Products")]
+        public IActionResult GetLast9Products()
+        {
+            var value = _mapper.Map<List<ResultGetLast9ProductsDto>>(_productService.TGetLast9Products());
+            return Ok(value);
+        }
     }
 }

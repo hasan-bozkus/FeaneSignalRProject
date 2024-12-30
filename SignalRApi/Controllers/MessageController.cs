@@ -22,7 +22,7 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult MessageList()
         {
-            var values = _mapper.Map<ResultMessageDto>(_messageService.TGetListAll());
+            var values = _mapper.Map<List<ResultMessageDto>>(_messageService.TGetListAll());
             return Ok(values);
         }
 

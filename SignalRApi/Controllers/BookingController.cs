@@ -27,7 +27,7 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult BookingList()
         {
-            var values = _mapper.Map<ResultBookingDto>(_bookingService.TGetListAll());
+            var values = _mapper.Map<List<ResultBookingDto>>(_bookingService.TGetListAll());
             return Ok(values);
         }
 

@@ -23,7 +23,7 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public ActionResult NotificationList()
         {
-            var values = _mapper.Map<ResultNotificationDto>(_notificationService.TGetListAll());
+            var values = _mapper.Map<List<ResultNotificationDto>>(_notificationService.TGetListAll());
             return Ok(values);
         }
 
