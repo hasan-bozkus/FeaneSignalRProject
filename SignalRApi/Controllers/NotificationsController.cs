@@ -12,16 +12,18 @@ namespace SignalRApi.Controllers
     public class NotificationsController : ControllerBase
     {
         private readonly INotificationService _notificationService;
+        private readonly IMapper _mapper;
 
-        public NotificationsController(INotificationService notificationService)
+        public NotificationsController(INotificationService notificationService, IMapper mapper)
         {
             _notificationService = notificationService;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult NotificationList()
         {
-            var values = _notificationService.TGetListAll();
+            var values = _mapper.Map<ResultNotificationDto>(_notificationService.TGetListAll());
             return Ok(values);
         }
 
@@ -42,15 +44,10 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public ActionResult CreateNotification(CreateNotificationDto createNotificationDto)
         {
-            Notification notification = new Notification()
-            {
-                Type = createNotificationDto.Type,
-                Date = Convert.ToDateTime(DateTime.Now.ToString()),
-                Description = createNotificationDto.Description,
-                Icon = createNotificationDto.Icon,
-                Status = false
-            };
-            _notificationService.TAdd(notification);
+            createNotificationDto.Status = false;
+            createNotificationDto.Date = Convert.ToDateTime(DateTime.Now.ToString());
+            var value = _mapper.Map<Notification>(createNotificationDto);
+            _notificationService.TAdd(value);
             return Ok("bildirim eklendi");
         }
 
@@ -65,23 +62,16 @@ namespace SignalRApi.Controllers
         [HttpGet("{id}")]
         public IActionResult GetNotification(int id)
         {
-            var value = _notificationService.TGetByID(id);
+            var value = _mapper.Map<GetNotificationDto>(_notificationService.TGetByID(id));
             return Ok(value);
         }
 
         [HttpPut]
         public ActionResult UpdateNotification(UpdateNotificationDto updateNotificationDto)
         {
-            Notification notification = new Notification()
-            {
-                NotificationID = updateNotificationDto.NotificationID,
-                Type = updateNotificationDto.Type,
-                Date = updateNotificationDto.Date,
-                Description = updateNotificationDto.Description,
-                Icon = updateNotificationDto.Icon,
-                Status = false
-            };
-            _notificationService.TUpdate(notification);
+            updateNotificationDto.Status = false;
+            var value = _mapper.Map<Notification>(updateNotificationDto);
+            _notificationService.TUpdate(value);
             return Ok("bildirim güncellendi");
         }
 

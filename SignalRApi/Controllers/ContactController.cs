@@ -30,17 +30,8 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateContact(CreateContactDto createContactDto)
         {
-            _contactService.TAdd(new Contact()
-            {
-                FooterDescription = createContactDto.FooterDescription,
-                Location = createContactDto.Location,
-                Mail = createContactDto.Mail,
-                PhoneNumber = createContactDto.PhoneNumber,
-                FooterTitle = createContactDto.FooterTitle,
-                OpenDays = createContactDto.OpenDays,
-                OpenDaysDescription = createContactDto.OpenDaysDescription,
-                OpenHours = createContactDto.OpenHours
-            });
+            var value = _mapper.Map<Contact>(createContactDto);
+            _contactService.TAdd(value);
             return Ok("İletişim başarılı bir şekilde eklendi.");
         }
 
@@ -55,26 +46,15 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateContact(UpdateContactDto updateContactDto)
         {
-
-            _contactService.TUpdate(new Contact()
-            {
-                ContactID = updateContactDto.ContactID,
-                FooterDescription = updateContactDto.FooterDescription,
-                Location = updateContactDto.Location,
-                Mail = updateContactDto.Mail,
-                PhoneNumber = updateContactDto.PhoneNumber,
-                FooterTitle = updateContactDto.FooterTitle,
-                OpenDays = updateContactDto.OpenDays,
-                OpenDaysDescription = updateContactDto.OpenDaysDescription,
-                OpenHours = updateContactDto.OpenHours
-            });
+            var value = _mapper.Map<Contact>(updateContactDto);
+            _contactService.TUpdate(value);
             return Ok("İletişim başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("{id}")]
         public IActionResult GetContact(int id)
         {
-            var value = _contactService.TGetByID(id);
+            var value = _mapper.Map<GetContactDto>(_contactService.TGetByID(id));
             return Ok(value);
         }
     }

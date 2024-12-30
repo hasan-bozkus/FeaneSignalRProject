@@ -22,25 +22,17 @@ namespace SignalRApi.Controllers
         [HttpGet]
         public IActionResult MessageList()
         {
-            var values = _messageService.TGetListAll();
+            var values = _mapper.Map<ResultMessageDto>(_messageService.TGetListAll());
             return Ok(values);
         }
 
         [HttpPost]
         public IActionResult CreateMessage(CreateMessageDto createMessageDto)
         {
-            Message message = new Message()
-            {
-                Mail = createMessageDto.Mail,
-                MessageContent = createMessageDto.MessageContent,
-                MessageSendDate = createMessageDto.MessageSendDate,
-                NameSurname = createMessageDto.NameSurname,
-                Phone = createMessageDto.Phone,
-                Subject = createMessageDto.Subject,
-                Status = false
-            };
-
-            _messageService.TAdd(message);
+            createMessageDto.Status = false;
+            createMessageDto.MessageSendDate = DateTime.Now;
+            var value = _mapper.Map<Message>(createMessageDto);
+            _messageService.TAdd(value);
             return Ok("Mesaj başarılı bir şekilde gönderildi.");
         }
 
@@ -55,25 +47,15 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateMessage(UpdateMessageDto updateMessageDto)
         {
-            Message message = new Message()
-            {
-                MessageID = updateMessageDto.MessageID,
-                Mail = updateMessageDto.Mail,
-                MessageContent = updateMessageDto.MessageContent,
-                MessageSendDate = updateMessageDto.MessageSendDate,
-                NameSurname = updateMessageDto.NameSurname,
-                Phone = updateMessageDto.Phone,
-                Subject = updateMessageDto.Subject,
-                Status = false
-            };
-            _messageService.TUpdate(message);
+            var value = _mapper.Map<Message>(updateMessageDto);
+            _messageService.TUpdate(value);
             return Ok("Mesaj bilgisi güncellendi.");
         }
 
         [HttpGet("{id}")]
         public IActionResult GetMessage(int id)
         {
-            var value = _messageService.TGetByID(id);
+            var value = _mapper.Map<GetMessageDto>(_messageService.TGetByID(id));
             return Ok(value);
         }
     }
