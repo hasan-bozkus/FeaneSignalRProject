@@ -35,7 +35,7 @@ namespace SignalRWebUI.Controllers
             var responseMessage = await client.DeleteAsync($"https://localhost:44303/api/Baskets/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", new { id = 4 });
+                return RedirectToAction("Index", new { id = id });
             }
             return NoContent();
         }

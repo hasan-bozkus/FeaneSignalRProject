@@ -124,8 +124,8 @@
                 </div>
             </div>
             <div class="btn-box">
-                <a href="/Baskets/Index">
-                    Sepete Git
+                <a href="/Basket/Index/@ViewBag.v">
+                    Sepete Git @* (@ViewBag.v) *@
                 </a>
             </div>
         </div>
@@ -147,7 +147,7 @@
                     count: 1, //varsayılan olarak 1
                     totalPrice: price, //varsayılan olarak 1
                     // productID: id,
-                    menuTable: 4 //varsayılan olarak 0 veya başka bir değer
+                    menuTableId: @ViewBag.v //varsayılan olarak 0 veya başka bir değer
                 }),
                 contentType: 'application/json',
                 success: function () {

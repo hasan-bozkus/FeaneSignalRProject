@@ -53,10 +53,10 @@ namespace SignalRApi.Controllers
             _basketService.TAdd(new Basket()
             {
                 ProductID = createBasketDto.ProductID,
+                MenuTableID = createBasketDto.MenuTableID,
                 Price = context.Products.Where(x => x.ProductID == createBasketDto.ProductID).Select(y => y.Price).FirstOrDefault(),
                 Count = 1,
-                MenuTableID = 4,
-                TotalPrice = 0
+                TotalPrice = createBasketDto.TotalPrice
             });
             return Ok("Sepete Eklendi");
         }

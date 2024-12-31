@@ -20,8 +20,10 @@ namespace SignalRWebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
+            ViewBag.v = id;
+            TempData["x"] = id;
 
             var client = _httpClientFactory.CreateClient();
             var responseProductMessage = await client.GetAsync("https://localhost:44303/api/Product/ProdctListWithCategory");
