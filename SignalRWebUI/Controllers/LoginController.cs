@@ -28,7 +28,7 @@ namespace SignalRWebUI.Controllers
             var result = await _signInManager.PasswordSignInAsync(loginDto.UserName, loginDto.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Index", "Statistic");
             }
             else
             {

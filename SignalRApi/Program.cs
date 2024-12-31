@@ -2,6 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using SignalR.BusinessLayer.Abstract;
 using SignalR.BusinessLayer.Concrete;
+using SignalR.BusinessLayer.Container;
 using SignalR.BusinessLayer.ValidationRules.BookingValidations;
 using SignalR.DataAccessLayer.Abstract;
 using SignalR.DataAccessLayer.Concrete;
@@ -28,57 +29,7 @@ builder.Services.AddSignalR();
 builder.Services.AddDbContext<SignalRContext>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-builder.Services.AddScoped<IAboutService, AboutManager>();
-builder.Services.AddScoped<IAboutDal, EFAboutDal>();
-
-builder.Services.AddScoped<IBookingService, BookingManager>();
-builder.Services.AddScoped<IBookingDal, EFBookingDal>();
-
-builder.Services.AddScoped<ICategoryService, CategoryManager>();
-builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
-
-builder.Services.AddScoped<IContactService, ContactManager>();
-builder.Services.AddScoped<IContactDal, EFContactDal>();
-
-builder.Services.AddScoped<IDiscountService, DiscountManager>();
-builder.Services.AddScoped<IDiscountDal, EFDiscountDal>();
-
-builder.Services.AddScoped<IFeatureService, FeatureManager>();
-builder.Services.AddScoped<IFeatureDal, EFFeatureDal>();
-
-builder.Services.AddScoped<IProductService, ProductManager>();
-builder.Services.AddScoped<IProductDal, EFProductDal>();
-
-builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
-builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
-
-builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
-builder.Services.AddScoped<ITestimonialDal, EFTestimonialDal>();
-
-builder.Services.AddScoped<IOrderService, OrderManager>();
-builder.Services.AddScoped<IOrderDal, EFOrderDal>();
-
-builder.Services.AddScoped<IOrderDetailService, OrderDetailManager>();
-builder.Services.AddScoped<IOrderDetailDal, EFOrderDetailDal>();
-
-builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
-builder.Services.AddScoped<IMoneyCaseDal, EFMoneyCaseDal>();
-
-builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
-builder.Services.AddScoped<IMenuTableDal, EFMenuTableDal>();
-
-builder.Services.AddScoped<ISliderService, SliderManager>();
-builder.Services.AddScoped<ISliderDal, EFSliderDal>();
-
-builder.Services.AddScoped<IBasketService, BasketManager>();
-builder.Services.AddScoped<IBasketDal, EFBasketDal>();
-
-builder.Services.AddScoped<INotificationService, NotificationManager>();
-builder.Services.AddScoped<INotificationDal, EFNotificationDal>();
-
-builder.Services.AddScoped<IMessageService, MessageManager>();
-builder.Services.AddScoped<IMessageDal, EFMessageDal>();
-
+builder.Services.ContainerDependencies();
 builder.Services.AddFluentValidationAutoValidation(config =>
 {
     config.DisableDataAnnotationsValidation = true;
