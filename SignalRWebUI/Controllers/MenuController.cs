@@ -55,11 +55,16 @@ namespace SignalRWebUI.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddBasket([FromBody] CreateBasketDto createBasketDto)
-        {
+        {         
+
             var client = _httpClientFactory.CreateClient();
+           
             var jsonData = JsonConvert.SerializeObject(createBasketDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:44303/api/Baskets/", stringContent);
+
+            await client.GetAsync($"https://localhost:44303/api/MenuTables/ChangeMenuTableStatusToTrue/{createBasketDto.MenuTableID}");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
