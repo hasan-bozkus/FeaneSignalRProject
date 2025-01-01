@@ -10,6 +10,7 @@ namespace SignalRApi.Mapping
         {
             CreateMap<Message, ResultMessageDto>().ReverseMap();
             CreateMap<Message, CreateMessageDto>().ReverseMap();
+            CreateMap<Message, GetMessageDto>().ReverseMap();
             CreateMap<Message, UpdateMessageDto>().ReverseMap();
         }
     }
