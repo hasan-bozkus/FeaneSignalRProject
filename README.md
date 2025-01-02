@@ -6,7 +6,7 @@
 
 # Projemizin Temel Maksadı
 
-Restoran işletmecisinin sisteme girdiğinde ürün ekleyebildiği, qr kod oluşturup masaları kontrol edebildiği, gelen sipraişleri yönetebildiği, anlık olarak muhasebesini görebildiği, kullanıcılar ile anlık olarak mesajlaşabildiği, yapılan rezervasyonlara E-Posta ile posta gönderebildiği ve Kullanıcıların qr kodu okutarak önceden rezerve ettiği masalarda sipraiş oluşturup veya qr kodu okutup yeni bir rezervasyon yapabildiği - tamamlayabildiği ve septte işlemlerinde sipraiş verdikleri ürünleri kontrol edebildikleri bir platform geliştirmesi amaçlandı.
+Restoran işletmecisinin sisteme girdiğinde ürün ekleyebildiği, qr kod oluşturup masaları kontrol edebildiği, gelen sipraişleri yönetebildiği, anlık olarak muhasebesini görebildiği, kullanıcılar ile anlık olarak mesajlaşabildiği, yapılan rezervasyonlara E-Posta ile posta gönderebildiği ve Kullanıcıların qr kodu okutarak önceden rezerve ettiği masalarda sipraiş oluşturup veya qr kodu okutup yeni bir rezervasyon yapabildiği - tamamlayabildiği ve septte işlemlerinde sipraiş verdikleri ürünleri kontrol edebildikleri bir platform geliştirilmesi amaçlandı.
 
 Bu projemizde Asp.Net Core 6.0 Web Api ve Mvc olmak üzere iki ana katman olmak üzere 6 katmandan oluşmaktadır. Ve SigalR öncelkili olarak tüm CRUD işlemleri - Entity'e özgü metotları ve algoritmaları EntityFramework Core Orm'si ile geliştirildi.
 
