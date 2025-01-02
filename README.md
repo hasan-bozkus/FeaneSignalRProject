@@ -2,7 +2,7 @@
 
 # Sertifika
 
-![certificate](https://github.com/hasan-bozkus/FeaneSignalRProject/blob/master/SignalRWebUI/wwwroot/feane-1.0.0/images/Asp.Net%20Core%20Api%20SignalR%20ile%20QR%20Kodlu%20Sipari%C5%9F%20Y%C3%B6netimi.jpg?raw=true)
+![certificate](https://github.com/hasan-bozkus/FeaneSignalRProject/blob/master/SignalRWebUI/wwwroot/feane-1.0.0/images/Asp.Net%20Core%20Api%20SignalR%20ile%20QR%20Kodlu%20Sipari%C5%9F%20Y%C3%B6netimi.jpg)
 
 # Projemizin Temel Maksadı
 
