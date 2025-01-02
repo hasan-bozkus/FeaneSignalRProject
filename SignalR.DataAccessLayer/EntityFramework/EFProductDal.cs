@@ -49,7 +49,7 @@ namespace SignalR.DataAccessLayer.EntityFramework
         public int ProductCountByNameHumburger()
         {
             using var context = new SignalRContext();
-            return context.Products.Where(x => x.CategoryID == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryID).FirstOrDefault())).Count();
+            return context.Products.Where(x => x.CategoryID == (context.Categories.Where(y => y.CategoryName == "Ev Yemekleri").Select(z => z.CategoryID).FirstOrDefault())).Count();
         }
 
         public string ProductNameByMaxPrice()
@@ -73,13 +73,13 @@ namespace SignalR.DataAccessLayer.EntityFramework
         public decimal ProductAvgPriceByHamburger()
         {
             using var context = new SignalRContext();
-            return context.Products.Where(x => x.CategoryID == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryID).FirstOrDefault())).Average(w => w.Price);
+            return context.Products.Where(x => x.CategoryID == (context.Categories.Where(y => y.CategoryName == "Ev Yemekleri").Select(z => z.CategoryID).FirstOrDefault())).Average(w => w.Price);
         }
 
         public decimal ProductPriceBySetakBurger()
         {
             var context = new SignalRContext();
-            return context.Products.Where(x => x.ProductName == "Steak Burger").Select(y => y.Price).FirstOrDefault();
+            return context.Products.Where(x => x.ProductName == "Kuru Fasulye").Select(y => y.Price).FirstOrDefault();
         }
 
         public decimal TotalPriceByDrinkCategory()
